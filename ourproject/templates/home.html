@@ -1,0 +1,42 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>Drag and Drop</title>
+    <link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <script></script>
+  </head>
+  <body>
+    
+    <h1>Домашняя страница</h1>
+    <h2>Загружаемые файлы:</h2>
+    <div id="uploads">
+      <ul>
+      </ul>
+    </div>
+    <div class="dropzone" id="dropzone">Перетащите файлы сюда</div>
+    <script>
+      (function() {
+      var dropzone = document.getElementById("dropzone");
+      dropzone.ondragover = function() {
+        this.className = 'dropzone dragover';
+        this.innerHTML = 'Отпустите мышку';
+        return false;
+      };
+
+      dropzone.ondragleave = function() {
+        this.className = 'dropzone';
+        this.innerHTML = 'Перетащите файлы сюда';
+        return false;
+      };
+
+      dropzone.ondrop = function(e) {
+        this.className = 'dropzone';
+        this.innerHTML = 'Перетащите файлы сюда';
+        e.preventDefault();
+      };
+      })();
+    </script>
+  </body>
+</html>
